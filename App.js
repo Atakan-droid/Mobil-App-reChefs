@@ -8,11 +8,12 @@ import AppContainer from './src/navigation/AppContainer';
 if (!firebase.apps.length) {
   firebase.initializeApp(apiKeys.firebaseConfig);
 }
-  
+
 export default class App extends React.Component {
 
-  render(){
+render(){
 return (
+
     <AppContainer/>
 );
 }
