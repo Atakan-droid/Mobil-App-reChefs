@@ -76,19 +76,14 @@ render(){
   <Text style={{marginBottom: 10}}>
      {item.MealDesc}
   </Text>
-    <Tooltip popover={<Text>{"Hijklkjljljljlj,\nfbjdgjdgjdjd"}</Text>}>
-  <Text>Press me</Text>
-</Tooltip>
 </Card>}>
 </FlatList>
     </View> 
      </Container>
  
    );  
-
   }
 };
-
 const styles = StyleSheet.create({
   container: {
     
