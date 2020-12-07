@@ -20,8 +20,6 @@ export default class LoginPage extends React.Component {
 
     logininUser =() =>{
 
-      this.setState({loading :false});
-      
       const {navigation} = this.props;
 
       try{
@@ -33,7 +31,6 @@ export default class LoginPage extends React.Component {
         })
 
       }catch(error){
-        this.setState({loading:false});
         Alert.alert(
           'Oops',
           'Giris Yapılmadı',
