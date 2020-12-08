@@ -16,7 +16,7 @@ export default class addMealPage extends React.Component {
             MealName: '',
             MealDesc : [],
             MealPhoto : '',
-            loading : true ,
+           
 
         }
     }
@@ -30,10 +30,8 @@ export default class addMealPage extends React.Component {
               })
             }
           });
-
-
     }
-  createMeal =() => {
+    createMeal =() => {
       const {navigation} =this.props;
       const timestamp = new Date().getTime();
 
@@ -50,9 +48,6 @@ export default class addMealPage extends React.Component {
                 navigation.navigate("Ana Sayfa");
             })
           }
-
-
-
     render() {
 
         return(

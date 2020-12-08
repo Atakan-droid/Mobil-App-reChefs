@@ -15,7 +15,7 @@ export default class mainPage extends React.Component {
 
   state = {
     meals : [],
-    modalVisible :false,
+    
     
 
   }
