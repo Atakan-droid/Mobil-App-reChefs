@@ -67,7 +67,6 @@ render (){
           autoCorrect ={false}
           autoCapitalize="none"
           onChangeText={(email)=>this.setState({email})}/>
-
         </Item>
         <Item floatingLabel>
           <Label style={styles.labelStyle}>Password</Label>
@@ -92,7 +91,6 @@ render (){
       </View>
       </Container>
   );
-
   }
 };
 const styles = StyleSheet.create({
@@ -105,5 +103,4 @@ const styles = StyleSheet.create({
   labelStyle:{
     color :'gray',
   }
-
 });

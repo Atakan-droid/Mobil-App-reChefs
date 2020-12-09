@@ -56,7 +56,7 @@ goToaddMeal =() => {
 render(){
  
   return(
-    <Container style = {styles.container}>
+<Container style = {styles.container}>
       <View>
         <TouchableOpacity onPress={() => this.goToaddMeal()}>
         <Button style={{alignItems:'center' , backgroundColor : '#fea73a'}}
@@ -65,21 +65,21 @@ render(){
          <Text style={{color:'white'}}>Yemek Ekle</Text>
         </Button>
         </TouchableOpacity>
-<FlatList
- data={this.state.meals}
- keyExtractor={(item) => item.meal}
- renderItem={({item})=>
-  <Card>
-  <Card.Title >{item.MealName}</Card.Title>
-  <Card.Divider/>
-  <Card.Image source={{uri: item.MealPhoto}} />
-  <Text style={{marginBottom: 10}}>
-     {item.MealDesc}
-  </Text>
-</Card>}>
-</FlatList>
-    </View> 
-     </Container>
+        <FlatList
+          data={this.state.meals}
+          keyExtractor={(item) => item.meal}
+          renderItem={({item})=>
+             <Card>
+                <Card.Title >{item.MealName}</Card.Title>
+                <Card.Divider/>
+                <Card.Image source={{uri: item.MealPhoto}} />
+                <Text style={{marginBottom: 10}}>
+                              {item.MealDesc}
+                </Text>
+             </Card>}>
+          </FlatList>
+      </View> 
+</Container>
  
    );  
   }
@@ -93,6 +93,5 @@ const styles = StyleSheet.create({
   },
   labelStyle:{
     color :'gray',
-  }
-
+  },
 });

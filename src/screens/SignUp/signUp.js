@@ -14,7 +14,6 @@ export default class SignUpPage extends React.Component {
           email: '',
           name : '',
           password : '',
-          
       }
   }
 
