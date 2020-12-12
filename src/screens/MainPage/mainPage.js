@@ -1,9 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View,Modal, NativeModules } from 'react-native';
 import * as firebase from 'firebase';
-import {Card, Tooltip} from 'react-native-elements';
+import {Card, Divider, Tooltip} from 'react-native-elements';
+import * as Notifications from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
 import {Container,Content,Header,Form,Input,Item,Label,Button, Image} from 'native-base';
 import { FlatList, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { Dimensions } from 'react-native';
+
+const {width, height} = Dimensions.get('window');
 
 export default class mainPage extends React.Component {
 
@@ -11,44 +16,58 @@ export default class mainPage extends React.Component {
     super(porps)
    
   }
-
-
   state = {
     meals : [],
-    
-    
-
+    modalVisible: false,
   }
   componentDidMount = async () => {
 
     firebase.database().ref('meals').on('value', snap =>{
       var meals = [];
       snap.forEach(element =>{
-        const {MealName , MealDesc, MealPhoto ,meal } = element.val();
-        meals.push({MealName ,MealDesc ,MealPhoto ,meal});
+        const {MealName , MealDesc, MealPhoto ,MealRecipe ,meal } = element.val();
+        meals.push({MealName ,MealDesc ,MealPhoto, MealRecipe ,meal});
       });
       this.setState({meals : meals});
     });
-   
 
-
-      firebase.auth().onAuthStateChanged(auth=>{
+    firebase.auth().onAuthStateChanged(auth=>{
           if(auth){
             firebase.database().ref('meals').child(auth.uid).once('value',(snap) =>{
               this.setState({meal :snap.val()})
             })
           }
         });
-
-
-
+        this.registerForPushNotificationsAsync();
   }
+
+  registerForPushNotificationsAsync = async () => {
+
+      const { status: existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+      let finalStatus = existingStatus;
+      if (existingStatus !== 'granted') {
+        const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+        finalStatus = status;
+      }
+      if (finalStatus !== 'granted') {
+        
+        return;
+      }
+      let token = await Notifications.getExpoPushTokenAsync()
+
+      let uid =firebase.auth().currentUser.uid;
+      
+      firebase.database().ref('users').child(uid).update({
+        token
+      })
+      
+    };
 
 goToaddMeal =() => {
 
   const {navigation} = this.props;
 
-      navigation.navigate("Add Meal");
+      navigation.navigate("Yemek Ekle");
 
 
 }
@@ -66,6 +85,7 @@ render(){
         </Button>
         </TouchableOpacity>
         <FlatList
+          inverted
           data={this.state.meals}
           keyExtractor={(item) => item.meal}
           renderItem={({item})=>
@@ -74,8 +94,31 @@ render(){
                 <Card.Divider/>
                 <Card.Image source={{uri: item.MealPhoto}} />
                 <Text style={{marginBottom: 10}}>
-                              {item.MealDesc}
+                 {item.MealDesc}
                 </Text>
+                <Card.Divider/>
+                <TouchableOpacity onPress={() => this.setState({modalVisible:true})}>
+        <Button style={{alignItems:'center' , backgroundColor : '#fea73a'}}
+        full
+        rounded>
+         <Text style={{color:'white'}}>Tarifini Gör</Text>
+        </Button>
+                </TouchableOpacity>
+                <Modal
+        animationType="slide"
+        transparent={true}
+        style={{justifyContent:'center',alignItems:'center'}}
+        visible={this.state.modalVisible}>
+         <View style={{height: height/4,width:width,paddingTop:40, backgroundColor:'#FCD4CB'}}>
+         <TouchableOpacity onPress={() =>this.setState({modalVisible:false})}>
+           <Text style={{paddingLeft:10,fontSize:15,padding:10,color: '#fea73a'}}>Geri Dön</Text>
+         </TouchableOpacity>
+         <Divider style ={{padding:5, backgroundColor:'#FCD4CB'}}/>
+        <View style={{backgroundColor:'white',borderRadius:5,padding:10}}>
+         <Text >{item.MealRecipe}</Text>
+           </View>
+         </View>
+        </Modal>
              </Card>}>
           </FlatList>
       </View> 

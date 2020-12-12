@@ -25,7 +25,9 @@
     "react-native-web": "~0.13.7",
     "react-navigation-stack": "^2.10.2",
     "react-notifications": "^1.7.2",
-    "react-toastify": "^6.1.0"
+    "react-toastify": "^6.1.0",
+    "expo-permissions": "~9.3.0",
+    "expo-notifications": "~0.7.2"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"

@@ -16,6 +16,7 @@ export default class addMealPage extends React.Component {
             MealName: '',
             MealDesc : [],
             MealPhoto : '',
+            MealRecipe : '',
            
 
         }
@@ -41,6 +42,7 @@ export default class addMealPage extends React.Component {
          MealName:this.state.MealName,
          MealDesc:this.state.MealDesc,
          MealPhoto:this.state.MealPhoto,
+         MealRecipe: this.state.MealRecipe,
          meal:this.state.meal,
         
 
@@ -55,6 +57,7 @@ export default class addMealPage extends React.Component {
       <Form>
       <View style={{alignItems:'center'}}>
           <Thumbnail source={require('../img/200x200.png')}/>
+          <Text style ={{padding:5 }}>reChefs</Text>
        </View>
       <Item floatingLabel>
           <Label style={styles.labelStyle}>Yemek Adı</Label>
@@ -70,6 +73,14 @@ export default class addMealPage extends React.Component {
           autoCorrect ={false}
           autoCapitalize="none"
           onChangeText={(MealDesc)=>this.setState({MealDesc :MealDesc})}/>
+
+        </Item>
+        <Item floatingLabel>
+          <Label style={styles.labelStyle}>Yemek Tarifi</Label>
+          <Input 
+          autoCorrect ={false}
+          autoCapitalize="none"
+          onChangeText={(MealRecipe)=>this.setState({MealRecipe :MealRecipe})}/>
 
         </Item>
         <Item floatingLabel>
@@ -93,10 +104,10 @@ export default class addMealPage extends React.Component {
 }
 const styles = StyleSheet.create({
     container: {
-      flex :1,
+      
       backgroundColor: '#FCD4CB',
-      padding:10,
-      justifyContent :'center'
+      padding:5,
+      
     },
     labelStyle:{
       color :'gray',

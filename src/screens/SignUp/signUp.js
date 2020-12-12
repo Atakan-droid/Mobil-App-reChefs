@@ -35,7 +35,7 @@ export default class SignUpPage extends React.Component {
 
         });
 
-        navigation.navigate("Login");
+        navigation.navigate("Giriş Yap");
 
     
     }
@@ -61,7 +61,6 @@ export default class SignUpPage extends React.Component {
       });
     }
 
-
   render(){
       return (
 
@@ -69,6 +68,7 @@ export default class SignUpPage extends React.Component {
       <Form>
       <View style={{alignItems:'center'}}>
           <Thumbnail style={{width:100 ,height:100}} source={require('../img/200x200.png')}/>
+          <Text style ={{padding:5 }}>reChefs</Text>
        </View>
       <Item floatingLabel>
           <Label style={styles.labelStyle}>Adınız</Label>
@@ -84,10 +84,9 @@ export default class SignUpPage extends React.Component {
           autoCorrect ={false}
           autoCapitalize="none"
           onChangeText={(email)=>this.setState({email :email})}/>
-
         </Item>
         <Item floatingLabel>
-          <Label style={styles.labelStyle}>Password</Label>
+          <Label style={styles.labelStyle}>Şifre</Label>
           <Input 
           secureTextEntry={true}
           autoCorrect ={false}
@@ -99,7 +98,7 @@ export default class SignUpPage extends React.Component {
         full
         rounded
         onPress={() => this.signUpUser()}>
-         <Text style={{color:'white'}}>Sign Up</Text>
+         <Text style={{color:'white'}}>Kayıt Ol</Text>
         </Button>
       </Form>
     </Container>

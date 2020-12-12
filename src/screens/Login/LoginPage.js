@@ -17,7 +17,6 @@ export default class LoginPage extends React.Component {
         
     }
   }
-
     logininUser =() =>{
 
       const {navigation} = this.props;
@@ -45,11 +44,10 @@ export default class LoginPage extends React.Component {
 
       const {navigation} = this.props;
 
-      navigation.navigate("Sign Up")
+      navigation.navigate("Kayıt Ol")
 
     }
  
-
 render (){
   
   
@@ -60,6 +58,7 @@ render (){
       <Form>
         <View style={{alignItems:'center'}}>
           <Thumbnail style={{width:100 ,height:100}} source={require('../img/200x200.png')}/>
+          <Text style ={{padding:5 }}>reChefs</Text>
         </View>
         <Item floatingLabel>
           <Label style={styles.labelStyle}>Email</Label>
@@ -69,7 +68,7 @@ render (){
           onChangeText={(email)=>this.setState({email})}/>
         </Item>
         <Item floatingLabel>
-          <Label style={styles.labelStyle}>Password</Label>
+          <Label style={styles.labelStyle}>Şifre</Label>
           <Input 
           secureTextEntry={true}
           autoCorrect ={false}
@@ -80,7 +79,7 @@ render (){
         <Button style={{marginTop:10 ,backgroundColor : '#fea73a'}}
         full
         rounded>
-         <Text style={{color:'white'}}>Login</Text>
+         <Text style={{color:'white'}}>Giriş Yap</Text>
         </Button> 
         </TouchableOpacity>
         <TouchableOpacity style ={{alignItems:'center'}} onPress={()=> this.goSignUp()}>

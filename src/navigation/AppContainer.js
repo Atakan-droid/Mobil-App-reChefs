@@ -12,11 +12,11 @@ const Stack = createStackNavigator();
 const AppNavigationContainer = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Sign Up" component={SignUpScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Navigator initialRouteName="Giriş Yap">
+        <Stack.Screen name="Kayıt Ol" component={SignUpScreen} />
+        <Stack.Screen name="Giriş Yap" component={LoginScreen} />
         <Stack.Screen name="Ana Sayfa" component={MainScreen} />
-        <Stack.Screen name="Add Meal" component ={AddMealScreen}/>
+        <Stack.Screen name="Yemek Ekle" component ={AddMealScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
