@@ -13,10 +13,10 @@ const AppNavigationContainer = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Giriş Yap">
-        <Stack.Screen name="Kayıt Ol" component={SignUpScreen} />
-        <Stack.Screen name="Giriş Yap" component={LoginScreen} />
-        <Stack.Screen name="Ana Sayfa" component={MainScreen} />
-        <Stack.Screen name="Yemek Ekle" component ={AddMealScreen}/>
+        <Stack.Screen options={{headerStyle:{backgroundColor:'#FCD4CB'}}} name="Kayıt Ol" component={SignUpScreen} />
+        <Stack.Screen options={{headerStyle:{backgroundColor:'#FCD4CB'}}} name="Giriş Yap" component={LoginScreen} />
+        <Stack.Screen options={{headerStyle:{backgroundColor:'#FCD4CB'}}} name="Ana Sayfa" component={MainScreen} />
+        <Stack.Screen options={{headerStyle:{backgroundColor:'#FCD4CB'}}} name="Yemek Ekle" component ={AddMealScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

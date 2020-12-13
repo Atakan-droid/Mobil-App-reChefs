@@ -58,7 +58,7 @@ export default class mainPage extends React.Component {
       let uid =firebase.auth().currentUser.uid;
       
       firebase.database().ref('users').child(uid).update({
-        token
+        expoToken :token
       })
       
     };
@@ -97,22 +97,27 @@ render(){
                  {item.MealDesc}
                 </Text>
                 <Card.Divider/>
-                <TouchableOpacity onPress={() => this.setState({modalVisible:true})}>
-        <Button style={{alignItems:'center' , backgroundColor : '#fea73a'}}
-        full
-        rounded>
-         <Text style={{color:'white'}}>Tarifini Gör</Text>
+          <View style={{flex:1, flexDirection:'row', justifyContent:'space-around'}}>
+        <TouchableOpacity style={{flex:1}} onPress={() => this.setState({modalVisible:true})}>
+        <Button style={{backgroundColor : '#fea73a'}}>
+         <Text style={{color:'white', marginHorizontal:60}}>Tarifini Gör</Text>
+        </Button> 
+        </TouchableOpacity>
+        <TouchableOpacity style={{flex:1}}>
+           <Button style={{backgroundColor : 'red'}}>
+         <Text style={{color:'white',marginHorizontal:20}}>Beğeni</Text>
         </Button>
-                </TouchableOpacity>
+        </TouchableOpacity>
+         </View>
                 <Modal
         animationType="slide"
         transparent={true}
         style={{justifyContent:'center',alignItems:'center'}}
         visible={this.state.modalVisible}>
-         <View style={{height: height/4,width:width,paddingTop:40, backgroundColor:'#FCD4CB'}}>
-         <TouchableOpacity onPress={() =>this.setState({modalVisible:false})}>
-           <Text style={{paddingLeft:10,fontSize:15,padding:10,color: '#fea73a'}}>Geri Dön</Text>
-         </TouchableOpacity>
+         <View style={{height: height/3,width:width,paddingTop:20, backgroundColor:'#FCD4CB'}}>
+         <Button style={{backgroundColor:'white',borderRadius:10,padding:10,marginLeft:10}} onPress={() =>this.setState({modalVisible:false})}>
+             <Text style={{paddingLeft:10,fontSize:15,padding:10,color: '#fea73a'}}>Geri Dön</Text>
+           </Button>
          <Divider style ={{padding:5, backgroundColor:'#FCD4CB'}}/>
         <View style={{backgroundColor:'white',borderRadius:5,padding:10}}>
          <Text >{item.MealRecipe}</Text>

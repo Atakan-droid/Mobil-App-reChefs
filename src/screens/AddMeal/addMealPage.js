@@ -17,6 +17,7 @@ export default class addMealPage extends React.Component {
             MealDesc : [],
             MealPhoto : '',
             MealRecipe : '',
+            likes: 0,
            
 
         }
