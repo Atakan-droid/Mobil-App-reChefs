@@ -4,8 +4,8 @@ import * as firebase from 'firebase';
 import {Card, Divider, Tooltip} from 'react-native-elements';
 import * as Notifications from 'expo-notifications';
 import * as Permissions from 'expo-permissions';
-import {Container,Content,Header,Form,Input,Item,Label,Button, Image} from 'native-base';
-import { FlatList, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import {Container,Button} from 'native-base';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import { Dimensions } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
@@ -104,8 +104,7 @@ render(){
          <Text style={{color:'white', marginHorizontal:60}}>Tarifini Gör</Text>
         </Button> 
         </TouchableOpacity>
-         </View>
-                <Modal
+        <Modal
         animationType="slide"
         transparent={true}
         style={{justifyContent:'center',alignItems:'center'}}
@@ -126,6 +125,7 @@ render(){
            </View>
          </View>
         </Modal>
+         </View>
              </Card>}>
           </FlatList>
       </View> 
