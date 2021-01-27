@@ -5,6 +5,7 @@ import LoginScreen from '../screens/Login/LoginPage';
 import SignUpScreen from '../screens/SignUp/signUp'
 import MainScreen from '../screens/MainPage/mainPage';
 import AddMealScreen from '../screens/AddMeal/addMealPage';
+import ShowMeal from '../screens/showMeal/showMeal';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,7 @@ const AppNavigationContainer = () => {
         <Stack.Screen options={{headerStyle:{backgroundColor:'#FCD4CB'}}} name="Giriş Yap" component={LoginScreen} />
         <Stack.Screen options={{headerStyle:{backgroundColor:'#FCD4CB'}}} name="Ana Sayfa" component={MainScreen} />
         <Stack.Screen options={{headerStyle:{backgroundColor:'#FCD4CB'}}} name="Yemek Ekle" component ={AddMealScreen}/>
+        <Stack.Screen options={{headerStyle:{backgroundColor:'#FCD4CB'}}} name="Yemek Tarifi" component ={ShowMeal}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

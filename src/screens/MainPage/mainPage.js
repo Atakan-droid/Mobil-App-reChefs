@@ -18,8 +18,8 @@ export default class mainPage extends React.Component {
   }
   state = {
     meals : [],
-    modalVisible: false,
   }
+
   componentDidMount = async () => {
 
     firebase.database().ref('meals').on('value', snap =>{
@@ -74,6 +74,7 @@ goToaddMeal =() => {
 
 render(){
  
+
   return(
 <Container style = {styles.container}>
       <View>
@@ -86,7 +87,6 @@ render(){
         </TouchableOpacity>
         <FlatList
           inverted
-          style={{borderRadius:50}}
           data={this.state.meals}
           keyExtractor={(item) => item.meal}
           renderItem={({item})=>
@@ -99,32 +99,11 @@ render(){
                 </Text>
                 <Card.Divider/>
           <View style={{flex:1, flexDirection:'row', justifyContent:'space-around'}}>
-        <TouchableOpacity style={{flex:1}} onPress={() => this.setState({modalVisible:true})}>
+        <TouchableOpacity style={{flex:1}} onPress={() => { this.props.navigation.navigate('Yemek Tarifi', { MealName: item.MealName, MealPhoto: item.MealPhoto, MealRecipe: item.MealRecipe })}}>
         <Button style={{backgroundColor : '#fea73a',borderRadius:10}}>
          <Text style={{color:'white', marginHorizontal:60}}>Tarifini Gör</Text>
         </Button> 
         </TouchableOpacity>
-        <Modal
-        animationType="slide"
-        transparent={true}
-        style={{justifyContent:'center',alignItems:'center'}}
-        visible={this.state.modalVisible}>
-         <View style={{height: height,width:width,paddingTop:20, backgroundColor:'#FCD4CB'}}>
-         <Button style={{backgroundColor:'white',borderRadius:10,padding:10,marginLeft:10}} onPress={() =>this.setState({modalVisible:false})}>
-             <Text style={{paddingLeft:10,fontSize:15,padding:10,color: '#fea73a'}}>Geri Dön</Text>
-           </Button>
-         <Divider style ={{padding:5, backgroundColor:'#FCD4CB'}}/>
-         <View style={{padding:10, backgroundColor:'#FCD4CB'}}>
-           <Card.Image source={{uri: item.MealPhoto}} />
-         </View>
-         <View style={{padding:20}}>
-         <Card.Title >{item.MealName} Tarifi</Card.Title>
-         </View>
-        <View style={{backgroundColor:'white',borderRadius:5,padding:10}}>
-         <Text >{item.MealRecipe}</Text>
-           </View>
-         </View>
-        </Modal>
          </View>
              </Card>}>
           </FlatList>
