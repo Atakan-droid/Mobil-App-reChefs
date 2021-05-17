@@ -1,7 +1,7 @@
 # Mobil-App-reChefs
-## Mobil-App about registering recipes
+### Mobil-App about registering recipes
 
-# Build with React-native/Firebase/node.js
+#### Build with React-native/Firebase/node.js
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/73894794/118517812-37fc3e80-b740-11eb-9080-e013396cdad4.png"  width="200" height="200"/>
