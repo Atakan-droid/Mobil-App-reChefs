@@ -1,5 +1,5 @@
-# Mobil-App-reChefs
-### Mobil-App about registering recipes
+# Mobile-App-reChefs
+### Mobile-App about registering recipes
 
 #### Build with React-native/Firebase/node.js
 
